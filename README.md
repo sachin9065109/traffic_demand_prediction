@@ -1,8 +1,9 @@
- 🚦 Flipkart Gridlock Hackathon 2.0
+# 🚦 Flipkart Gridlock Hackathon 2.0
 
 ## Overview
 
-This repository contains my solution for the Flipkart Gridlock Hackathon 2.0. The objective was to build a robust machine learning model capable of predicting traffic demand using historical traffic, weather, temporal, and geographical data.
+This repository contains my solution for the Flipkart Gridlock Hackathon 2.0, where the objective was to predict traffic demand using temporal, geographical, and environmental factors. The solution leverages advanced feature engineering and Gradient Boosting models to achieve strong predictive performance 
+
 
 ---
 
