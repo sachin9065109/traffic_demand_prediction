@@ -1,4 +1,4 @@
- My Gridlock Hackathon 2.0 Solution Approach & Methodology
+ My flipkart Gridlock Hackathon 2.0 Solution Approach & Methodology
 
 1. Data Exploration & Preprocessing
 * Combined Train and Test data temporarily to ensure uniform preprocessing and encoding across both datasets.
