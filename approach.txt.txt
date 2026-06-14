@@ -1,0 +1,35 @@
+ My Gridlock Hackathon 2.0 Solution Approach & Methodology
+
+1. Data Exploration & Preprocessing
+* Combined Train and Test data temporarily to ensure uniform preprocessing and encoding across both datasets.
+* Handled Missing Values: 
+  - Filled missing numerical values in 'Temperature' using the median strategy to avoid outlier bias.
+  - Filled missing categorical values in 'RoadType' and 'Weather' with a distinct 'Unknown' category.
+* Categorical Encoding: 
+  - Mapped binary text features ('LargeVehicles', 'Landmarks') to standard 0 and 1 integers.
+  - Applied Label Encoding to multi-class categorical features like 'geohash', 'RoadType', and 'Weather'.
+
+2. Feature Engineering
+* Temporal Extraction: Processed the 'timestamp' column to extract specific 'hour' and 'minute' components.
+* Time Indexing: Created a highly predictive custom feature 'time_index' (calculated as hour*4 + minute//15) to capture 15-minute intervals effectively throughout the day.
+* Dropped redundant columns like the original 'timestamp' and 'Index' to prevent data leakage and dimensionality issues.
+
+3. Model Selection
+* Evaluated multiple advanced Gradient Boosting algorithms: CatBoostRegressor, XGBoostRegressor, and LightGBMRegressor.
+* Validated baseline performance using an 80-20 train-test split.
+* Selected CatBoostRegressor as the primary model due to its superior R2 score and robust handling of encoded categorical features.
+
+4. Hyperparameter Tuning & Cross-Validation
+* Employed RandomizedSearchCV (with 3-fold CV) to find the optimal hyperparameters for the CatBoost model, tuning parameters like 'learning_rate', 'depth', 'l2_leaf_reg', and 'iterations'.
+* Implemented K-Fold Cross-Validation (n_splits=5) on the optimized model to ensure generalizability and prevent overfitting. The model demonstrated stable R2 scores across all folds.
+* Extracted Feature Importances, confirming that temporal features (time_index, hour) and geohash were the strongest predictors of traffic demand.
+
+5. Final Prediction & Submission Strategy
+* Retrained the optimized CatBoost model on the entire training dataset to maximize data utilization.
+* Generated predictions for the test set and meticulously formatted the final output to strictly align with the target submission format (handling length and index alignments) to ensure seamless evaluation.
+
+Tools & Libraries Used:
+Python, Pandas, Numpy, Matplotlib, Seaborn, Scikit-Learn, CatBoost, XGBoost, LightGBM.  
+
+A Sincere Thank You:
+I would like to sincerely thank the evaluation team and judges for taking the time to review my approach and source code. A special thanks to Flipkart and the organizers of the Gridlock Hackathon for putting together such an amazing event and an engaging problem statement. It has been a truly fantastic learning experience!
